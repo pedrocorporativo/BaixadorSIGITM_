@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Baixador SIGITM — simples</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top"><h1>Baixador SIGITM</h1><span>Extensão simples</span></header>
+  <main>
+    <section class="mode-card panel">
+      <h2>Modo</h2>
+      <label class="sr-only" for="mode">Modo de operação</label>
+      <select id="mode"><option value="analysis">Analisar sem preencher</option><option value="automatic">Baixar automaticamente</option></select>
+      <p id="modeHint" class="mode-hint">Lê os campos e mostra a classificação; não altera o chamado.</p>
+    </section>
+    <section id="aiStatus" class="ai-status panel" data-state="unknown" aria-live="polite">
+      <div class="status-row"><span class="ai-pulse" aria-hidden="true"></span><div><span class="eyebrow">IA OPCIONAL · GROQ</span><strong id="aiStatusTitle">Verificando conexão…</strong></div></div>
+      <p id="aiStatusText">Consultando configuração local.</p>
+      <a class="text-link" href="../configuracoes/options.html" target="_blank">Configurar/testar IA (opcional) <span aria-hidden="true">↗</span></a>
+    </section>
+    <section id="liveStatus" class="live-status panel" data-state="idle" aria-live="polite">
+      <div class="live-heading">
+        <span class="live-dot" aria-hidden="true"></span>
+        <div><span class="eyebrow">STATUS</span><strong id="liveTitle">Aguardando comando</strong></div>
+        <span id="liveBadge" class="live-badge">PARADO</span>
+      </div>
+      <p id="liveMessage">Abra um chamado SIGITM e inicie a automação.</p>
+    </section>
+    <section id="result" class="result panel" aria-live="polite">
+      <div class="result-heading"><span class="result-icon" aria-hidden="true">↗</span><div><span class="eyebrow">ÚLTIMA EXECUÇÃO</span><strong id="resultTitle">Nenhuma análise recente</strong></div></div>
+      <p id="resultSummary">Abra um chamado SIGITM e inicie uma análise. O resultado e os campos lidos aparecerão aqui.</p>
+    </section>
+    <div class="actions" aria-label="Ações do chamado">
+      <button id="execute" class="primary" type="button" aria-label="Analisar chamado"><span id="executeIcon" class="button-icon" aria-hidden="true">⌕</span><span><strong id="executeLabel">Analisar chamado</strong></span><span class="button-arrow" aria-hidden="true">→</span></button>
+      <button id="stop" class="danger" type="button" disabled><span aria-hidden="true">■</span> Automação inativa</button>
+    </div>
+    <footer class="footer"><a href="../configuracoes/options.html" target="_blank">Configurações e histórico</a></footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
