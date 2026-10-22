@@ -1,0 +1,11 @@
+{
+  "name": "baixador-sigitm-simples",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Extensão MV3 independente para análise de baixa SIGITM com IA e regras determinísticas.",
+  "scripts": {
+    "build": "node ferramentas/build-worker.js",
+    "check": "node ferramentas/build-worker.js --check",
+    "test": "node ferramentas/build-worker.js --check && node testes/run-tests.js"
+  }
+}

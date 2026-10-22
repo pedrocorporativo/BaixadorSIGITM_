@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "Baixador SIGITM Simples",
+  "version": "4.0.0",
+  "description": "Extensão simplificada para análise e baixa de chamados SIGITM, com IA Groq e regras determinísticas.",
+  "icons": {
+    "16": "icones/sigitm-v2-16.png",
+    "32": "icones/sigitm-v2-32.png",
+    "48": "icones/sigitm-v2-48.png",
+    "128": "icones/sigitm-v2-128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://sigitm.redecorp.br/SIGITMWeb/*",
+    "https://sigitm.redecorp.br/SIGITMWeb/*",
+    "http://10.240.59.14/SIGITMWeb/*",
+    "https://api.groq.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icones/sigitm-v2-48.png",
+        "recursos/sigitm-v2.svg"
+      ],
+      "matches": [
+        "http://sigitm.redecorp.br/*",
+        "https://sigitm.redecorp.br/*",
+        "http://10.240.59.14/*"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "plano-de-fundo/service-worker.js"
+  },
+  "action": {
+    "default_title": "Baixador SIGITM Simples",
+    "default_icon": {
+      "16": "icones/sigitm-v2-16.png",
+      "32": "icones/sigitm-v2-32.png",
+      "48": "icones/sigitm-v2-48.png"
+    },
+    "default_popup": "painel/popup.html"
+  },
+  "options_page": "configuracoes/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://sigitm.redecorp.br/SIGITMWeb/*",
+        "https://sigitm.redecorp.br/SIGITMWeb/*",
+        "http://10.240.59.14/SIGITMWeb/*"
+      ],
+      "js": [
+        "utilitarios/helpers.js",
+        "regras/baixa-rules.js",
+        "regras/validation.js",
+        "automacao/navigation.js",
+        "automacao/date-handler.js",
+        "automacao/form-handler.js",
+        "automacao/baixa-handler.js",
+        "interface/notifications.js",
+        "conteudo/content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}
